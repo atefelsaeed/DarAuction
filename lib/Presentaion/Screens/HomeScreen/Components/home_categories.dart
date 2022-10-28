@@ -17,34 +17,37 @@ class HomeCategories extends StatelessWidget {
             State is CategoriesSuccess,
             builder: (context, state) {
               return SizedBox(
-                  height: height(context) * .08,
+                  height: height(context) * .065,
                   child: state is CategoriesSuccess
-                      ? ListView.builder(
+                      ? ListView.separated(
                       itemCount: state
                           .categoriesModel.categoryList.length,
+                      separatorBuilder: (context, index)=>SizedBox(width: 15,),
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) => InkWell(
                         onTap: () {},
-                        child: Padding(
-                          padding: EdgeInsets.all(
-                              AppSize.padding2(context)),
-                          child: Container(
-                            padding:
-                            const EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              color: ColorManager.wight,
-                              borderRadius:
-                              BorderRadius.circular(20),
-                            ),
+                        child: Container(
+                          padding:EdgeInsets.all(AppSize.padding2(context)),
+                          decoration: BoxDecoration(
+                            color: ColorManager.wight,
+                            borderRadius:
+                            BorderRadius.circular(
+                                AppSize.borderRadius20(context)),
+                          ),
+
+                          child: Center(
                             child: Text(state
                                 .categoriesModel
-                                .categoryList[index]),
+                                .categoryList[index],style: TextStyle(
+                              color: ColorManager.blackColor,
+                              fontSize: FontSize.textS14(context),
+                            )),
                           ),
                         ),
                       ))
-                      : Center(
+                      : const Center(
                       child:
-                      const CircularProgressIndicator()));
+                      CircularProgressIndicator()));
             }));
   }
 }

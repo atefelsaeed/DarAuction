@@ -51,7 +51,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 itemCount: OnBoardingData.screens.length,
               ),
             ),
-            AppSize.spaceHeight2(context),
+
             Center(
               child: SmoothPageIndicator(
                 controller: OnBoardingData.boardController,
