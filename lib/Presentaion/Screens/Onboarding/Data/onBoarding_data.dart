@@ -12,11 +12,6 @@ class OnBoardingData {
   static bool isFirst = false;
 
   static List productSlider = [];
-  static List sliderImages = [
-    ImageAssets.product0,
-    ImageAssets.product1,
-    ImageAssets.product2,
-  ];
   static List screens = [
     const OnBoardingMainPage(
       title: 'Find Your Doctor',
@@ -36,8 +31,6 @@ class OnBoardingData {
   ];
 
   static void submit(context) {
-    // DataStorage.writeData('onBoarding', true);
-
     Navigation.navigateWithName(context, Routes.homeRoute);
   }
 }

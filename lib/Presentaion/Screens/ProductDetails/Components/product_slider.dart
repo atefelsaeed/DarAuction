@@ -1,3 +1,4 @@
+import 'package:dar_auction/Models/ServiceModels/products_model.dart';
 import 'package:dar_auction/Presentaion/Screens/ProductDetails/Cubit/states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -6,21 +7,15 @@ import '../../../../MainImports/main_imports.dart';
 import '../../Onboarding/Data/onBoarding_data.dart';
 import '../Cubit/cubit.dart';
 
-class ProductSlider extends StatefulWidget {
-  const ProductSlider({Key? key}) : super(key: key);
-
-  @override
-  State<ProductSlider> createState() => _ProductSliderState();
-}
-
-class _ProductSliderState extends State<ProductSlider> {
-  // int selectedImage = 1;
+class ProductSlider extends StatelessWidget {
+  const ProductSlider({Key? key, required this.products}) : super(key: key);
+  final Products products;
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProductCubit, ProductStates>(
       builder: (context, state) {
-        ProductCubit cubit=ProductCubit.get(context);
+        ProductCubit cubit = ProductCubit.get(context);
         return Column(
           children: [
             SizedBox(
@@ -29,30 +24,25 @@ class _ProductSliderState extends State<ProductSlider> {
                 physics: const BouncingScrollPhysics(),
                 controller: OnBoardingData.sliderController,
                 onPageChanged: (int index) {
-                  // setState(() {
-                  //   selectedImage = index;
-                  // });
                   cubit.changeBottomNavBar(index);
                 },
-                itemBuilder: (context, index) =>
-                    Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Container(
-                          width: width(context) * .8,
-                          height: height(context) * .35,
-                          // margin: ,
-                          decoration: BoxDecoration(
-                              color: ColorManager.wight,
-                              borderRadius: BorderRadius.circular(40)),
-                        ),
-                        Image.asset(
-                          OnBoardingData.sliderImages[cubit.selectedImage],
-                          width: width(context),
-                        ),
-                      ],
+                itemBuilder: (context, index) => Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Container(
+                      width: width(context) * .8,
+                      height: height(context) * .35,
+                      decoration: BoxDecoration(
+                          color: ColorManager.wight,
+                          borderRadius: BorderRadius.circular(40)),
                     ),
-                itemCount: OnBoardingData.sliderImages.length,
+                    Image.network(
+                      products.images[cubit.selectedImage],
+                      width: width(context) * .7,
+                    ),
+                  ],
+                ),
+                itemCount: products.images.length,
               ),
             ),
             AppSize.spaceHeight5(context),
@@ -67,22 +57,19 @@ class _ProductSliderState extends State<ProductSlider> {
                   dotWidth: 10,
                   spacing: 5,
                 ),
-                count: OnBoardingData.sliderImages.length,
+                count: products.images.length,
               ),
             ),
             AppSize.spaceHeight3(context),
             SizedBox(
               height: height(context) * .11,
               child: ListView.separated(
-                itemCount: OnBoardingData.sliderImages.length,
+                itemCount: products.images.length,
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
                   return InkWell(
                     onTap: () {
-                      // setState(() {
-                      //   selectedImage = index;
-                      // });
                       cubit.changeBottomNavBar(index);
                     },
                     child: Container(
@@ -91,7 +78,13 @@ class _ProductSliderState extends State<ProductSlider> {
                       decoration: BoxDecoration(
                           color: ColorManager.wight,
                           borderRadius: BorderRadius.circular(15)),
-                      child: Image.asset(OnBoardingData.sliderImages[index]),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child: Image.network(
+                          products.images[index],
+                          width: 70,
+                        ),
+                      ),
                     ),
                   );
                 },

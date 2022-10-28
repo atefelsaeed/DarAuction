@@ -1,11 +1,10 @@
 import 'package:dar_auction/MainImports/main_imports.dart';
+import 'package:dar_auction/Presentaion/PaymentScreen/payment_screen.dart';
 import 'package:dar_auction/Presentaion/Screens/ProductDetails/product_details_screen.dart';
 import 'package:dar_auction/Presentaion/Widgets/navigate_to.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
-import '../../../Resources/sizes.dart';
 import 'Cubit/cubit.dart';
 import 'Cubit/states.dart';
 
@@ -35,6 +34,44 @@ class _HomeDashBoardState extends State<HomeDashBoard> {
 
   @override
   Widget build(BuildContext context) {
+    List<SalomonBottomBarItem> bottomItems = [
+      SalomonBottomBarItem(
+        icon: const Icon(
+          Icons.home,
+        ),
+        title: const Text("Home"),
+        selectedColor: ColorManager.primaryColor,
+        unselectedColor: ColorManager.greyColor100,
+      ),
+      SalomonBottomBarItem(
+        icon: InkWell(
+          onTap: () {
+            Navigation.navigateTo(context, const PaymentScreen());
+          },
+          child: const Icon(
+            Icons.shopping_bag_outlined,
+          ),
+        ),
+        title: const Text("Cart"),
+        selectedColor: ColorManager.primaryColor,
+        unselectedColor: ColorManager.greyColor100,
+      ),
+      SalomonBottomBarItem(
+        icon: const Icon(Icons.favorite_border),
+        title: const Text("Favorite"),
+        selectedColor: ColorManager.primaryColor,
+        unselectedColor: ColorManager.greyColor100,
+      ),
+      SalomonBottomBarItem(
+        icon: const Icon(
+          Icons.person,
+        ),
+        title: const Text("Profile"),
+        selectedColor: ColorManager.primaryColor,
+        unselectedColor: ColorManager.greyColor100,
+      ),
+    ];
+
     return BlocProvider(
       create: (context) => HomeDashBoardCubit(),
       child: BlocBuilder<HomeDashBoardCubit, HomeDashBoardStates>(
@@ -60,52 +97,7 @@ class _HomeDashBoardState extends State<HomeDashBoard> {
                   child: SalomonBottomBar(
                     currentIndex: _currentIndex,
                     onTap: (i) => setState(() => _currentIndex = i),
-                    items: [
-                      /// Home
-                      SalomonBottomBarItem(
-                        icon: const Icon(
-                          Icons.home,
-                        ),
-                        title: const Text("Home"),
-                        selectedColor: ColorManager.primaryColor,
-                        unselectedColor: ColorManager.greyColor100,
-                      ),
-
-                      /// Likes
-                      ///
-                      SalomonBottomBarItem(
-                        icon: InkWell(
-                          onTap: () {
-                            Navigation.navigateTo(
-                                context, ProductDetailsScreen());
-                          },
-                          child: const Icon(
-                            Icons.shopping_bag_outlined,
-                          ),
-                        ),
-                        title: const Text("Cart"),
-                        selectedColor: ColorManager.primaryColor,
-                        unselectedColor: ColorManager.greyColor100,
-                      ),
-
-                      /// Search
-                      SalomonBottomBarItem(
-                        icon: const Icon(Icons.favorite_border),
-                        title: const Text("Favorite"),
-                        selectedColor: ColorManager.primaryColor,
-                        unselectedColor: ColorManager.greyColor100,
-                      ),
-
-                      /// Profile
-                      SalomonBottomBarItem(
-                        icon: const Icon(
-                          Icons.person,
-                        ),
-                        title: const Text("Profile"),
-                        selectedColor: ColorManager.primaryColor,
-                        unselectedColor: ColorManager.greyColor100,
-                      ),
-                    ],
+                    items: bottomItems,
                   ),
                 ),
               )

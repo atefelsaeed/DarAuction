@@ -6,11 +6,12 @@ import 'package:dar_auction/Presentaion/Screens/ProductDetails/Cubit/states.dart
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../MainImports/main_imports.dart';
+import '../../../Models/ServiceModels/products_model.dart';
 import '../../../Resources/assets_manager.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({Key? key}) : super(key: key);
-
+  const ProductDetailsScreen({Key? key, required this.products}) : super(key: key);
+final Products products;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -34,14 +35,14 @@ class ProductDetailsScreen extends StatelessWidget {
                     ),
                     child: SingleChildScrollView(
                       child: Column(
-                        children: const [
-                          ProductHeader(),
-                          ProductSlider(),
+                        children:  [
+                          const ProductHeader(),
+                          ProductSlider(products: products,),
                         ],
                       ),
                     ),
                   ),
-                  const ProductFooter()
+                   ProductFooter(products: products,)
                 ],
               ),
             );

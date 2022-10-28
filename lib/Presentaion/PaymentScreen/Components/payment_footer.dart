@@ -1,4 +1,3 @@
-import 'package:dar_auction/Presentaion/Screens/ProductDetails/Components/buy_now_section.dart';
 import 'package:dar_auction/Presentaion/Widgets/custom_button.dart';
 
 import '../../../../MainImports/main_imports.dart';

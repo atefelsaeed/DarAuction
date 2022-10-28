@@ -1,3 +1,4 @@
+import '../../../../Data/API/homedata.dart';
 import '../../../../MainImports/main_imports.dart';
 
 class ProductRate extends StatelessWidget {
@@ -5,7 +6,7 @@ class ProductRate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Row(
+    return Row(
       children: [
         Text(
           'FREE SHIPPING',
@@ -17,11 +18,11 @@ class ProductRate extends StatelessWidget {
           color: ColorManager.rate,
         ),
         Text(
-          '4.8 ',
+          HomePageData.products.rating.toString(),
           style: TextStyle(color: ColorManager.greyDarkColor),
         ),
         Text(
-          '(231)',
+          '(${ HomePageData.products.stock.toString()})',
           style: TextStyle(color: ColorManager.greyDarkColor),
         )
       ],

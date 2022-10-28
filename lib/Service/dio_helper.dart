@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 
 import 'endPoint.dart';
-import 'get_storage.dart';
 
 class DioHelper {
   static late Dio dio;
@@ -40,7 +39,7 @@ class DioHelper {
   }) async {
     dio.options.headers = {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ${DataStorage.readData("token")}',
+      // 'Authorization': 'Bearer ${DataStorage.readData("token")}',
       "Accept": "application/json"
     };
     //This is If no network handle it
@@ -122,7 +121,7 @@ class DioHelper {
     dio.options.headers = {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ${DataStorage.readData("token")}',
+      // 'Authorization': 'Bearer ${DataStorage.readData("token")}',
     };
     return dio.delete(
       url,

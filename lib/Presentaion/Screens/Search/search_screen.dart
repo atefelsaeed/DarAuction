@@ -112,7 +112,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                     ),
                                   ),
                                 )))
-                        : SizedBox(
+                        : const SizedBox(
                             height: 0,
                           ),
                   ],

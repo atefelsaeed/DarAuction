@@ -1,3 +1,4 @@
+import '../../../../Data/API/homedata.dart';
 import '../../../../MainImports/main_imports.dart';
 
 class ProductDescriptions extends StatelessWidget {
@@ -10,7 +11,7 @@ class ProductDescriptions extends StatelessWidget {
       children: [
         AppSize.spaceHeight1(context),
         Text(
-          'Sony WH-1000XM4',
+          HomePageData.products.title,
           style: TextStyle(
               fontWeight: FontWeight.w700,
               fontSize: FontSize.textS20(context),
@@ -18,7 +19,7 @@ class ProductDescriptions extends StatelessWidget {
         ),
         AppSize.spaceHeight1(context),
         Text(
-          'The intuitive and intelligent WH-1000XM4 headphones bring you new improvements in industry-leading noise cancelling technology.',
+          HomePageData.products.description,
           style: TextStyle(
             fontWeight: FontWeight.w400,
             fontSize: FontSize.textS16(context),

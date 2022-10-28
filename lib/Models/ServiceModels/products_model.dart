@@ -5,13 +5,15 @@ class ProductModel {
     required this.skip,
     required this.limit,
   });
+
   late final List<Products> products;
   late final int total;
   late final int skip;
   late final int limit;
 
-  ProductModel.fromJson(Map<String, dynamic> json){
-    products = List.from(json['products']).map((e)=>Products.fromJson(e)).toList();
+  ProductModel.fromJson(Map<String, dynamic> json) {
+    products =
+        List.from(json['products']).map((e) => Products.fromJson(e)).toList();
     total = json['total'];
     skip = json['skip'];
     limit = json['limit'];
@@ -19,7 +21,7 @@ class ProductModel {
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
-    _data['products'] = products.map((e)=>e.toJson()).toList();
+    _data['products'] = products.map((e) => e.toJson()).toList();
     _data['total'] = total;
     _data['skip'] = skip;
     _data['limit'] = limit;
@@ -41,6 +43,7 @@ class Products {
     required this.thumbnail,
     required this.images,
   });
+
   late final int id;
   late final String title;
   late final String description;
@@ -53,13 +56,13 @@ class Products {
   late final String thumbnail;
   late final List<String> images;
 
-  Products.fromJson(Map<String, dynamic> json){
+  Products.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
     description = json['description'];
     price = json['price'];
     discountPercentage = json['discountPercentage'];
-    rating =double.parse( json['rating'].toString());
+    rating = double.parse(json['rating'].toString());
     stock = json['stock'];
     brand = json['brand'];
     category = json['category'];

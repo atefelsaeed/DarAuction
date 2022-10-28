@@ -10,32 +10,31 @@ class HomeScreenCubit extends Cubit<HomeScreenStates> {
 
   getCategoriesCubit() async {
     try {
-      CategoriesModel categoriesModel  = await HomePageData.getCategoriesData();
+      CategoriesModel categoriesModel = await HomePageData.getCategoriesData();
       emit(CategoriesSuccess(categoriesModel: categoriesModel));
-    }catch(ex){
+    } catch (ex) {
       emit(CategoriesError());
       rethrow;
     }
   }
 
-
   getProductCubit() async {
     try {
- ProductModel productModel = await HomePageData.getProductsData();
+      ProductModel productModel = await HomePageData.getProductsData();
       emit(ProductSuccess(productModel: productModel));
-    }catch(ex){
+    } catch (ex) {
       emit(ProductError());
       rethrow;
     }
   }
+
   getSearchCubit(name) async {
     try {
       ProductModel productModel = await HomePageData.getSearchData(name);
       emit(SearchSuccess(productModel: productModel));
-    }catch(ex){
+    } catch (ex) {
       emit(SearchError());
       rethrow;
     }
   }
-
 }

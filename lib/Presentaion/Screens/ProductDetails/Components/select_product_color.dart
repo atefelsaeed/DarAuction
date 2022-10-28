@@ -1,3 +1,4 @@
+import '../../../../Data/API/homedata.dart';
 import '../../../../MainImports/main_imports.dart';
 
 class SelectProductColor extends StatelessWidget {
@@ -10,7 +11,7 @@ class SelectProductColor extends StatelessWidget {
       child: Row(
         children: [
           Text(
-            '\$ 2,999',
+            '\$ ${ HomePageData.products.price.toString()}',
             style: TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: FontSize.textS20(context),

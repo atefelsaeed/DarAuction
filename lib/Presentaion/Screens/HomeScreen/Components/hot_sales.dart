@@ -1,3 +1,5 @@
+import 'package:dar_auction/Presentaion/Screens/ProductDetails/product_details_screen.dart';
+import 'package:dar_auction/Presentaion/Widgets/navigate_to.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../MainImports/main_imports.dart';
@@ -37,58 +39,70 @@ class HotSales extends StatelessWidget {
                                 )
                               ],
                             ),
-                            child: SingleChildScrollView(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  DefaultButton(
-                                    radius: AppSize.borderRadius10(context),
-                                    btnHeight: height(context) * .025,
-                                    textColor: ColorManager.primaryColor,
-                                    btnWidth: AppSize.width20(context),
-                                    fontSize: FontSize.textS13(context),
-                                    isWidget: true,
-                                    function: () {},
-                                    text: 'Free shipping',
-                                    background: ColorManager.wight,
-                                  ),
-                                  AppSize.spaceHeight1(context),
-                                  Image.network(
-                                    state
-                                        .productModel.products[index].thumbnail,
-                                    height: height(context) * .085,
-                                    width: width(context),
-                                  ),
-                                  AppSize.spaceHeight1(context),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Expanded(
-                                        child: Text(
-                                          state.productModel.products[index]
-                                              .title,
-                                          style: TextStyle(
-                                            color: ColorManager.blackColor,
-                                            fontSize: FontSize.textS14(context),
-                                          ),
-                                          maxLines: 2,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
+                            child: InkWell(
+                              onTap: () {
+                                Navigation.navigateTo(
+                                    context,
+                                    ProductDetailsScreen(
+                                        products: state
+                                            .productModel.products[index]));
+                              },
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    DefaultButton(
+                                      radius: AppSize.borderRadius10(context),
+                                      btnHeight: height(context) * .025,
+                                      textColor: ColorManager.primaryColor,
+                                      btnWidth: AppSize.width20(context),
+                                      fontSize: FontSize.textS13(context),
+                                      isWidget: true,
+                                      function: () {},
+                                      text: 'Free shipping',
+                                      background: ColorManager.wight,
+                                    ),
+                                    AppSize.spaceHeight1(context),
+                                    Image.network(
+                                      state.productModel.products[index]
+                                          .thumbnail,
+                                      height: height(context) * .085,
+                                      width: width(context),
+                                    ),
+                                    AppSize.spaceHeight1(context),
+                                    Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.start,
                                       children: [
-                                        Text(
-                                            '\$ ${state.productModel.products[index].price.toString()}',
+                                        Expanded(
+                                          child: Text(
+                                            state.productModel.products[index]
+                                                .title,
                                             style: TextStyle(
-                                                color: ColorManager.blackColor,
-                                                fontSize:
-                                                    FontSize.textS14(context),
-                                                fontWeight: FontWeight.w600)),
-                                      ])
-                                ],
+                                              color: ColorManager.blackColor,
+                                              fontSize:
+                                                  FontSize.textS14(context),
+                                            ),
+                                            maxLines: 2,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                              '\$ ${state.productModel.products[index].price.toString()}',
+                                              style: TextStyle(
+                                                  color:
+                                                      ColorManager.blackColor,
+                                                  fontSize:
+                                                      FontSize.textS14(context),
+                                                  fontWeight: FontWeight.w600)),
+                                        ])
+                                  ],
+                                ),
                               ),
                             ),
                           ),

@@ -1,7 +1,6 @@
 import 'package:dar_auction/Presentaion/Widgets/custom_button.dart';
 
 import '../../../../MainImports/main_imports.dart';
-import '../../../../Resources/assets_manager.dart';
 
 class OnBoardingMainPage extends StatefulWidget {
   const OnBoardingMainPage(

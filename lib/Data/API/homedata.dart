@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import '../../Models/ServiceModels/catageories_model.dart';
 import '../../Models/ServiceModels/products_model.dart';
 import '../../Service/dio_helper.dart';
@@ -9,9 +7,9 @@ class HomePageData {
     try {
       await DioHelper.init();
       var value = await DioHelper.getData(url: "products/categories");
- CategoriesModel categoriesModel = CategoriesModel.fromJson(value.data);
- print("esraa");
- print(categoriesModel.categoryList);
+      CategoriesModel categoriesModel = CategoriesModel.fromJson(value.data);
+      print("esraa");
+      print(categoriesModel.categoryList);
       return categoriesModel;
     } catch (ex) {
       rethrow;
@@ -29,7 +27,6 @@ class HomePageData {
     }
   }
 
-
   static getSearchData(String name) async {
     try {
       await DioHelper.init();
@@ -41,4 +38,17 @@ class HomePageData {
     }
   }
 
+  static Products products = Products(
+    id: 0,
+    title: '',
+    description: '',
+    price: 0,
+    discountPercentage: 0.0,
+    rating: 0.0,
+    stock: 1,
+    brand: '',
+    category: '',
+    thumbnail: '',
+    images: [],
+  );
 }

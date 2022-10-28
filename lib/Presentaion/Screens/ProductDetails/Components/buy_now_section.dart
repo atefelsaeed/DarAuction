@@ -52,7 +52,7 @@ class BuyNowSection extends StatelessWidget {
                 ),
                 style: TextButton.styleFrom(
                   minimumSize: Size.zero,
-                  padding:  EdgeInsets.all(5),
+                  padding:  const EdgeInsets.all(5),
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
               ),

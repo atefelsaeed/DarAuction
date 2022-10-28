@@ -53,6 +53,9 @@ class HomeScreen extends StatelessWidget {
                     )),
                 AppSize.spaceHeight1(context),
                 const SomeProducts(),
+                AppSize.spaceHeight12(context),
+                AppSize.spaceHeight6(context),
+
               ],
             ),
           ),
